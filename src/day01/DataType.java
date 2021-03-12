@@ -21,5 +21,22 @@ public class DataType {
         System.out.println(f1);
         System.out.println(d1);
 
+        //논리형
+        boolean b1 = true;
+        boolean b2 = false;
+//        boolean b3 = 0;
+//        boolean b4 = null;
+//        boolean b5 = "true";
+//        boolean b6 = True;
+
+        //문자형
+        //char 타입은 문자 1개를 저장할 수 있는 타입, 홑따옴표로 저장
+        char a1 = 'A';
+        //string 타입은 문자열을 저장할 수 있는 타입, 겹따옴표로 저장
+        String s1 = "ABC";
+
+        System.out.println("100"+"200");
+        System.out.println(100+"200"); //숫자와 문자열의 덧셈만
+
     }
 }
