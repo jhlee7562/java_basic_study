@@ -52,9 +52,49 @@ public class Roulette {
 
         // == 게임 시작 == //
         System.out.println("실탄을 넣고 탄창을 무작위로 돌립니다.\n");
-        System.out.println("총을 돌렸습니다. %s부터 시작합니다.", players);
 
         //선턴 플레이어 랜덤 결정
+        int turn = (int) (Math.random() * players.length);
+        String firsturn = players[turn];
+        System.out.printf("총을 돌렸습니다. %s부터 시작합니다.\n", firsturn);
+        int fire = (int) (Math.random() * bulletNum);
 
+    while (true) {
+        if (players.length == -1 | bulletNum == 0) {
+            break;
+        }
+        if (bulletNum != -1){
+        }
+
+        System.out.println("" + players[turn] + " 의 턴");
+        System.out.println("탄창을 무작위로 돌립니다");
+        System.out.println("# 엔터를 누르면 격발합니다");
+        sc.nextLine();
+        sc.nextLine();
+
+        if (magazine[fire] == false) {
+            System.out.println("휴... 살았습니다.");
+            turn++;
+        } else {
+            System.out.println("사망했습니다.");
+            bulletNum--;
+
+            //사망인원 삭제
+            for (int i = turn; i < players.length - 1; i++) {
+                players[i] = players[i + 1];
+            }
+
+            String[] temp = new String[players.length - 1];
+            for (int i = 0; i < temp.length; i++) {
+                temp[i] = players[i];
+            }
+            players = temp;
+            temp = null;
+        }
+        break;
     }
+
+        System.out.println("최종생존자 : " + Arrays.toString(players));
+    }
+
 }
