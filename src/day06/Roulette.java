@@ -60,7 +60,7 @@ public class Roulette {
         int fire = (int) (Math.random() * bulletNum);
 
     while (true) {
-        if (players.length == -1 | bulletNum == 0) {
+        if (playerNum == -1 | bulletNum == 0) {
             break;
         }
         if (bulletNum != -1){
@@ -88,13 +88,10 @@ public class Roulette {
             for (int i = 0; i < temp.length; i++) {
                 temp[i] = players[i];
             }
-            players = temp;
-            temp = null;
+            players = temp; temp = null;
         }
-        break;
+            break;
     }
-
         System.out.println("최종생존자 : " + Arrays.toString(players));
     }
-
 }
