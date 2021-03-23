@@ -1,3 +1,5 @@
+package day06;
+
 import java.util.*;
 
 public class htm최종 {
