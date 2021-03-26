@@ -11,7 +11,7 @@ public class Hunter extends Player{
     }
 
     @Override
-    void info(){
+    public void info(){
         super.info();
         System.out.println("# 동물 : " + beast);
     }

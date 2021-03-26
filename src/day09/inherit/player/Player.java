@@ -20,10 +20,13 @@ public class Player extends Object{
     void attack(){
         System.out.printf("%s님이 공격합니다.\n", this.nickname);
     }
-    void info(){
+    public void info(){
         System.out.println("===========================");
         System.out.println("# 캐릭터명 : " + nickname);
         System.out.println("# 레벨 : " + level);
         System.out.println("# 체력 : " + hp);
+    }
+    public String getNickname(){
+        return nickname;
     }
 }
