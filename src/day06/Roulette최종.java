@@ -1,18 +1,30 @@
 package day06;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Roulette최종 {
 
+    private static Scanner sc = new Scanner(System.in);
+
+    public static int safeNextInt(String question) {
+        while (true) {
+            try {
+                System.out.print(question);
+                return sc.nextInt();
+            } catch (InputMismatchException e) {
+                sc.nextLine();
+                System.out.println("정수로만 입력하세요.");
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("게임 인원 (2 ~ 4명) ==> ");
-
         //총 참여인원 수
-        int playerNum = sc.nextInt();
+//        System.out.print("게임 인원 (2 ~ 4명) ==> ");
+        int playerNum = safeNextInt("게임 인원 (2 ~ 4명) ==> ");
 
         //인원 수의 범위가 적당한지 판단
         if (playerNum < 2 || playerNum > 4) {
@@ -32,8 +44,8 @@ public class Roulette최종 {
         //참여 인원 이름 출력
         System.out.println(Arrays.toString(players) + " 참가!");
 
-        System.out.print("\n실탄 개수를 입력 (6 미만) ==> ");
-        int bulletNum = sc.nextInt();
+//        System.out.print("\n실탄 개수를 입력 (6 미만) ==> ");
+        int bulletNum = safeNextInt("\n실탄 개수를 입력 (6 미만) ==> ");
         sc.nextLine(); // 위에서 발생한 nextInt의 \n을 처리하는 구문
 
         //탄창 배열을 만든다 (공간 6개)
@@ -63,7 +75,7 @@ public class Roulette최종 {
 
         while (true) {
             //격발 전 총알 위치를 랜덤으로 설정
-            int bulletPosition = (int)(Math.random() * magazine.length);
+            int bulletPosition = (int) (Math.random() * magazine.length);
             System.out.printf("\n[%s님의 턴!] 실린더를 돌립니다.\n", players[turn]);
 
             System.out.println("# 엔터를 누르면 격발합니다.");
@@ -75,13 +87,15 @@ public class Roulette최종 {
                 System.out.printf("\n빵!! [%s]님 사망...\n", players[turn]);
                 //사망자를 배열에서 삭제하고
                 for (int i = turn; i < players.length - 1; i++) {
-                    players[i] = players[i+1];
+                    players[i] = players[i + 1];
                 }
-                String[] temp = new String[players.length - 1];;
+                String[] temp = new String[players.length - 1];
+                ;
                 for (int i = 0; i < temp.length; i++) {
                     temp[i] = players[i];
                 }
-                players = temp; temp = null;
+                players = temp;
+                temp = null;
                 playerNum--;
 
                 //탄창배열에서 총알이 나간 위치를 수정
